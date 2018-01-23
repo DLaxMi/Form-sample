@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="trial.css">
+    </head>
+    <body>
+        <div class="login-page">
+           <div class="form">
+               <form class="register-form">
+                   <input type="text" placeholder="user name" id="username"/>
+                   <input type="text" placeholder="password" id="password"/>
+                   <input type="text" placeholder="email id" id="email"/>
+                   <button onclick="store()">Register</button>
+                   <p class="page">Already Resgistered ? <a href="#">Login</a></p>
+               </form>
+               
+               
+               <form class="login-form">
+                   <input type="text" placeholder="user name" id="userName"/>
+                   <input type="text" placeholder="password" id="userPw"/>
+                   <button onclick="check()">login</button>
+                  <p class="page">Not Registered ? <a href="#">Register</a></p>
+               </form>
+           </div>  
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        
+        <script>
+            $('.page a').click(function(){
+            $('form').animate({height: "toggle" , opacity: "toggle"}, "slow")
+            });
+        
+        
+        </script>
+        <script>
+            var username = document.getElementById('username');
+            var password = document.getElementById('password');
+        var email = document.getElementById('email');
+        function store() {
+            localStorage.setItem('username', username.value);
+            localStorage.setItem('password', password.value);
+            localStorage.setItem('email', email.value);
+        }
+        function check() {
+
+    // stored data from the register-form
+    var storedName = localStorage.getItem('username');
+    var storedPw = localStorage.getItem('password');
+    var storedEmail = localStorage.getItem('email');
+
+    // entered data from the login-form
+    var userName = document.getElementById('userName');
+    var userPw = document.getElementById('userPw');
+
+    // check if stored data from register-form is equal to data from login form
+    if(userName.value !== storedName || userPw.value !== storedPw) {
+        alert("username and password you entered don't match.");
+    }else {
+        alert('You are loged in.');
+    }
+}
+        
+        
+        
+        </script>
+    </body>
+</html>
